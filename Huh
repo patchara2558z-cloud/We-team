@@ -1,0 +1,31 @@
+local player = game.Players.LocalPlayer
+local gui = Instance.new("ScreenGui")
+gui.Name = "RainbowRingUI"
+gui.Parent = player:WaitForChild("PlayerGui")
+gui.ResetOnSpawn = false
+local ring = Instance.new("ImageLabel")
+ring.Size = UDim2.new(0, 135, 0, 135)
+ring.Position = UDim2.new(0.5, -67, 0.5, -67)
+ring.BackgroundTransparency = 1
+ring.Image = "rbxassetid://117791157698681"
+ring.ImageTransparency = 0
+ring.Parent = gui
+ring:TweenPosition(UDim2.new(0.458, 0, 0.408, 0), "Out", "Linear", 0.4, false)
+wait(3)
+ring:TweenPosition(UDim2.new(0.0, 0, 0.0, 390), "Out", "Sine", 0.7, false)
+local gradient = Instance.new("UIGradient")
+gradient.Color = ColorSequence.new({
+ColorSequenceKeypoint.new(0.0, Color3.fromRGB(255, 0, 0)),
+ColorSequenceKeypoint.new(0.17, Color3.fromRGB(255, 165, 0)),
+ColorSequenceKeypoint.new(0.33, Color3.fromRGB(255, 255, 0)),
+ColorSequenceKeypoint.new(0.5, Color3.fromRGB(0, 255, 0)),
+ColorSequenceKeypoint.new(0.67, Color3.fromRGB(0, 127, 255)),
+ColorSequenceKeypoint.new(0.83, Color3.fromRGB(139, 0, 255)),
+ColorSequenceKeypoint.new(1.0, Color3.fromRGB(255, 0, 0))
+})
+gradient.Parent = ring
+while true do
+ring.Rotation = ring.Rotation + 2
+gradient.Rotation = (gradient.Rotation + 5) % 360
+wait(0.03)
+end
