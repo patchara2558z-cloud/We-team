@@ -1,0 +1,842 @@
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local hax = Instance.new("ScreenGui")
+local DragUi = Instance.new("Frame")
+local CloseOpen = Instance.new("TextButton")
+local FEhaxText = Instance.new("Frame")
+local FeHaxText = Instance.new("TextLabel")
+local mainscript = Instance.new("Frame")
+local TextBox = Instance.new("TextBox")
+local TextButton = Instance.new("TextButton")
+local TextButton_2 = Instance.new("TextButton")
+local TextButton_3 = Instance.new("TextButton")
+local TextButton_4 = Instance.new("TextButton")
+local TextButton_5 = Instance.new("TextButton")
+local TextButton_6 = Instance.new("TextButton")
+local TextButton_7 = Instance.new("TextButton")
+local TextButton1 = Instance.new("TextButton")
+local TextButton_8 = Instance.new("TextButton")
+local Stop = Instance.new("Frame")
+local TextButton_9 = Instance.new("TextButton")
+local TextLabel = Instance.new("TextLabel")
+local LowText = Instance.new("TextLabel")
+local MediumText = Instance.new("TextLabel")
+local Commands = Instance.new("TextButton")
+local CREDITS = Instance.new("TextButton")
+local SETTINGS = Instance.new("TextButton")
+local line = Instance.new("Frame")
+local CreditsFrame = Instance.new("Frame")
+local TextLabel_2 = Instance.new("TextLabel")
+local Frame = Instance.new("Frame")
+local TextLabel_3 = Instance.new("TextLabel")
+local SettingsFrame = Instance.new("Frame")
+local TextButton_10 = Instance.new("TextButton")
+local TextButton2 = Instance.new("TextButton")
+
+--Properties:
+
+hax.Name = "hax"
+hax.Parent = game:GetService("CoreGui")
+hax.DisplayOrder = 999999999
+hax.ResetOnSpawn = false
+
+DragUi.Name = "DragUi"
+DragUi.Parent = hax
+DragUi.BackgroundColor3 = Color3.fromRGB(67, 66, 67)
+DragUi.BorderColor3 = Color3.fromRGB(0, 0, 0)
+DragUi.BorderSizePixel = 0
+DragUi.Position = UDim2.new(0.0403521657, 0, 0.219354838, 0)
+DragUi.Size = UDim2.new(0, 398, 0, 21)
+
+CloseOpen.Name = "CloseOpen"
+CloseOpen.Parent = DragUi
+CloseOpen.BackgroundColor3 = Color3.fromRGB(67, 66, 67)
+CloseOpen.BorderColor3 = Color3.fromRGB(0, 0, 0)
+CloseOpen.BorderSizePixel = 0
+CloseOpen.Position = UDim2.new(1, 0, 0, 0)
+CloseOpen.Size = UDim2.new(0, -30, 0, 21)
+CloseOpen.Font = Enum.Font.SourceSans
+CloseOpen.Text = "_"
+CloseOpen.TextColor3 = Color3.fromRGB(255, 255, 255)
+CloseOpen.TextSize = 14.000
+
+FEhaxText.Name = "FEhaxText"
+FEhaxText.Parent = DragUi
+FEhaxText.BackgroundColor3 = Color3.fromRGB(94, 92, 96)
+FEhaxText.BorderColor3 = Color3.fromRGB(0, 0, 0)
+FEhaxText.BorderSizePixel = 0
+FEhaxText.Position = UDim2.new(0, 0, 1, 0)
+FEhaxText.Size = UDim2.new(0, 398, 0, 63)
+
+FeHaxText.Name = "FeHaxText"
+FeHaxText.Parent = FEhaxText
+FeHaxText.BackgroundColor3 = Color3.fromRGB(94, 92, 96)
+FeHaxText.BorderColor3 = Color3.fromRGB(0, 0, 0)
+FeHaxText.BorderSizePixel = 0
+FeHaxText.Size = UDim2.new(0, 398, 0, 29)
+FeHaxText.Font = Enum.Font.Arial
+FeHaxText.Text = "FE Hax GUI V.2.0.2.1"
+FeHaxText.TextColor3 = Color3.fromRGB(255, 255, 255)
+FeHaxText.TextSize = 16.000
+
+mainscript.Name = "mainscript"
+mainscript.Parent = FEhaxText
+mainscript.BackgroundColor3 = Color3.fromRGB(40, 39, 40)
+mainscript.BorderColor3 = Color3.fromRGB(0, 0, 0)
+mainscript.BorderSizePixel = 0
+mainscript.Position = UDim2.new(0, 0, 1, 0)
+mainscript.Size = UDim2.new(0, 398, 0, 226)
+
+TextBox.Parent = mainscript
+TextBox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextBox.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextBox.BorderSizePixel = 0
+TextBox.Position = UDim2.new(0.248743713, 0, 0.0530973449, 0)
+TextBox.Size = UDim2.new(0, 200, 0, 50)
+TextBox.Font = Enum.Font.SourceSans
+TextBox.Text = ""
+TextBox.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextBox.TextSize = 14.000
+
+TextButton.Parent = mainscript
+TextButton.BackgroundColor3 = Color3.fromRGB(87, 84, 89)
+TextButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.BorderSizePixel = 0
+TextButton.Position = UDim2.new(0.0100502511, 0, 0.314159304, 0)
+TextButton.Size = UDim2.new(0, 95, 0, 38)
+TextButton.Font = Enum.Font.SourceSans
+TextButton.Text = "Kill"
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.TextSize = 14.000
+
+TextButton_2.Parent = mainscript
+TextButton_2.BackgroundColor3 = Color3.fromRGB(87, 84, 89)
+TextButton_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextButton_2.BorderSizePixel = 0
+TextButton_2.Position = UDim2.new(0.266331673, 0, 0.314159304, 0)
+TextButton_2.Size = UDim2.new(0, 95, 0, 38)
+TextButton_2.Font = Enum.Font.SourceSans
+TextButton_2.Text = "Insane"
+TextButton_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton_2.TextSize = 14.000
+
+TextButton_3.Parent = mainscript
+TextButton_3.BackgroundColor3 = Color3.fromRGB(87, 84, 89)
+TextButton_3.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextButton_3.BorderSizePixel = 0
+TextButton_3.Position = UDim2.new(0.512562811, 0, 0.314159304, 0)
+TextButton_3.Size = UDim2.new(0, 95, 0, 38)
+TextButton_3.Font = Enum.Font.SourceSans
+TextButton_3.Text = "Invisble"
+TextButton_3.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton_3.TextSize = 14.000
+
+TextButton_4.Parent = mainscript
+TextButton_4.BackgroundColor3 = Color3.fromRGB(87, 84, 89)
+TextButton_4.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextButton_4.BorderSizePixel = 0
+TextButton_4.Position = UDim2.new(0.766331673, 0, 0.314159304, 0)
+TextButton_4.Size = UDim2.new(0, 86, 0, 38)
+TextButton_4.Font = Enum.Font.SourceSans
+TextButton_4.Text = "Hat Meme"
+TextButton_4.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton_4.TextSize = 14.000
+
+TextButton_5.Parent = mainscript
+TextButton_5.BackgroundColor3 = Color3.fromRGB(87, 84, 89)
+TextButton_5.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextButton_5.BorderSizePixel = 0
+TextButton_5.Position = UDim2.new(0.0100502418, 0, 0.508849561, 0)
+TextButton_5.Size = UDim2.new(0, 95, 0, 38)
+TextButton_5.Font = Enum.Font.SourceSans
+TextButton_5.Text = "Shutdown"
+TextButton_5.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton_5.TextSize = 14.000
+
+TextButton_6.Parent = mainscript
+TextButton_6.BackgroundColor3 = Color3.fromRGB(87, 84, 89)
+TextButton_6.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextButton_6.BorderSizePixel = 0
+TextButton_6.Position = UDim2.new(0.266331673, 0, 0.508849561, 0)
+TextButton_6.Size = UDim2.new(0, 95, 0, 38)
+TextButton_6.Font = Enum.Font.SourceSans
+TextButton_6.Text = "Dance"
+TextButton_6.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton_6.TextSize = 14.000
+
+TextButton_7.Parent = mainscript
+TextButton_7.BackgroundColor3 = Color3.fromRGB(87, 84, 89)
+TextButton_7.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextButton_7.BorderSizePixel = 0
+TextButton_7.Position = UDim2.new(0.512562811, 0, 0.508849561, 0)
+TextButton_7.Size = UDim2.new(0, 95, 0, 38)
+TextButton_7.Font = Enum.Font.SourceSans
+TextButton_7.Text = "Floating Head"
+TextButton_7.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton_7.TextSize = 14.000
+
+TextButton1.Name = "TextButton1"
+TextButton1.Parent = mainscript
+TextButton1.BackgroundColor3 = Color3.fromRGB(87, 84, 89)
+TextButton1.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextButton1.BorderSizePixel = 0
+TextButton1.Position = UDim2.new(0.766331673, 0, 0.508849561, 0)
+TextButton1.Size = UDim2.new(0, 86, 0, 38)
+TextButton1.Font = Enum.Font.SourceSans
+TextButton1.Text = "Spawn block"
+TextButton1.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton1.TextSize = 14.000
+
+TextButton_8.Parent = mainscript
+TextButton_8.BackgroundColor3 = Color3.fromRGB(87, 84, 89)
+TextButton_8.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextButton_8.BorderSizePixel = 0
+TextButton_8.Position = UDim2.new(0.0201005023, 0, 0.738938034, 0)
+TextButton_8.Size = UDim2.new(0, 91, 0, 38)
+TextButton_8.Font = Enum.Font.SourceSans
+TextButton_8.Text = "Disable Animation"
+TextButton_8.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton_8.TextSize = 14.000
+TextButton_8.TextWrapped = true
+
+Stop.Name = "Stop"
+Stop.Parent = FEhaxText
+Stop.BackgroundColor3 = Color3.fromRGB(40, 39, 40)
+Stop.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Stop.BorderSizePixel = 0
+Stop.Position = UDim2.new(0, 0, 1, 0)
+Stop.Size = UDim2.new(0, 398, 0, 226)
+Stop.Visible = false
+
+TextButton_9.Parent = Stop
+TextButton_9.BackgroundColor3 = Color3.fromRGB(87, 84, 89)
+TextButton_9.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextButton_9.BorderSizePixel = 0
+TextButton_9.Position = UDim2.new(0.306532651, 0, 0.154867262, 0)
+TextButton_9.Size = UDim2.new(0, 109, 0, 42)
+TextButton_9.Font = Enum.Font.SourceSans
+TextButton_9.Text = "Proceed"
+TextButton_9.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton_9.TextSize = 20.000
+
+TextLabel.Parent = Stop
+TextLabel.BackgroundColor3 = Color3.fromRGB(40, 39, 40)
+TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel.BorderSizePixel = 0
+TextLabel.Position = UDim2.new(0.0954773873, 0, 0.42920354, 0)
+TextLabel.Size = UDim2.new(0, 290, 0, 51)
+TextLabel.Font = Enum.Font.SourceSans
+TextLabel.Text = "Spawned Block into the games(if there none that the script broken"
+TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.TextSize = 20.000
+TextLabel.TextWrapped = true
+
+LowText.Name = "LowText"
+LowText.Parent = Stop
+LowText.BackgroundColor3 = Color3.fromRGB(40, 39, 40)
+LowText.BorderColor3 = Color3.fromRGB(0, 0, 0)
+LowText.BorderSizePixel = 0
+LowText.Position = UDim2.new(0.140703559, 0, 0.743362844, 0)
+LowText.Size = UDim2.new(0, 275, 0, 50)
+LowText.Visible = false
+LowText.Font = Enum.Font.SourceSans
+LowText.Text = "Low : Loads mini blocks for security reason ( recommanded)"
+LowText.TextColor3 = Color3.fromRGB(255, 255, 255)
+LowText.TextSize = 14.000
+LowText.TextYAlignment = Enum.TextYAlignment.Bottom
+
+MediumText.Name = "Medium Text"
+MediumText.Parent = Stop
+MediumText.BackgroundColor3 = Color3.fromRGB(40, 39, 40)
+MediumText.BorderColor3 = Color3.fromRGB(0, 0, 0)
+MediumText.BorderSizePixel = 0
+MediumText.Position = UDim2.new(0.140703559, 0, 0.743362844, 0)
+MediumText.Size = UDim2.new(0, 275, 0, 50)
+MediumText.Font = Enum.Font.SourceSans
+MediumText.Text = "Medium : Loads big blocks in games ( recommanded too)"
+MediumText.TextColor3 = Color3.fromRGB(255, 255, 255)
+MediumText.TextSize = 14.000
+MediumText.TextYAlignment = Enum.TextYAlignment.Bottom
+
+Commands.Name = "Commands"
+Commands.Parent = FEhaxText
+Commands.BackgroundColor3 = Color3.fromRGB(94, 92, 96)
+Commands.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Commands.BorderSizePixel = 0
+Commands.Position = UDim2.new(0.0100502511, 0, 0.507936537, 0)
+Commands.Size = UDim2.new(0, 109, 0, 28)
+Commands.AutoButtonColor = false
+Commands.Font = Enum.Font.SourceSans
+Commands.Text = "COMMANDS"
+Commands.TextColor3 = Color3.fromRGB(255, 255, 255)
+Commands.TextSize = 20.000
+
+CREDITS.Name = "CREDITS"
+CREDITS.Parent = FEhaxText
+CREDITS.BackgroundColor3 = Color3.fromRGB(94, 92, 96)
+CREDITS.BorderColor3 = Color3.fromRGB(0, 0, 0)
+CREDITS.BorderSizePixel = 0
+CREDITS.Position = UDim2.new(0.283919603, 0, 0.507936537, 0)
+CREDITS.Size = UDim2.new(0, 109, 0, 28)
+CREDITS.AutoButtonColor = false
+CREDITS.Font = Enum.Font.SourceSans
+CREDITS.Text = "CREDITS"
+CREDITS.TextColor3 = Color3.fromRGB(255, 255, 255)
+CREDITS.TextSize = 20.000
+
+SETTINGS.Name = "SETTINGS"
+SETTINGS.Parent = FEhaxText
+SETTINGS.BackgroundColor3 = Color3.fromRGB(94, 92, 96)
+SETTINGS.BorderColor3 = Color3.fromRGB(0, 0, 0)
+SETTINGS.BorderSizePixel = 0
+SETTINGS.Position = UDim2.new(0.557789028, 0, 0.507936537, 0)
+SETTINGS.Size = UDim2.new(0, 109, 0, 28)
+SETTINGS.AutoButtonColor = false
+SETTINGS.Font = Enum.Font.SourceSans
+SETTINGS.Text = "SETTINGS"
+SETTINGS.TextColor3 = Color3.fromRGB(255, 255, 255)
+SETTINGS.TextSize = 20.000
+
+line.Name = "line"
+line.Parent = FEhaxText
+line.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+line.BorderColor3 = Color3.fromRGB(0, 0, 0)
+line.BorderSizePixel = 0
+line.Position = UDim2.new(0.0201005023, 0, 0.952380955, 0)
+line.Size = UDim2.new(0, 100, 0, 2)
+
+CreditsFrame.Name = "CreditsFrame"
+CreditsFrame.Parent = FEhaxText
+CreditsFrame.BackgroundColor3 = Color3.fromRGB(40, 39, 40)
+CreditsFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+CreditsFrame.BorderSizePixel = 0
+CreditsFrame.Position = UDim2.new(0, 0, 1, 0)
+CreditsFrame.Size = UDim2.new(0, 398, 0, 226)
+CreditsFrame.Visible = false
+
+TextLabel_2.Parent = CreditsFrame
+TextLabel_2.BackgroundColor3 = Color3.fromRGB(40, 39, 40)
+TextLabel_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel_2.BorderSizePixel = 0
+TextLabel_2.Position = UDim2.new(0.0201005023, 0, 0.0398230106, 0)
+TextLabel_2.Size = UDim2.new(0, 226, 0, 50)
+TextLabel_2.Font = Enum.Font.SourceSans
+TextLabel_2.Text = "script - Made By wa_ter"
+TextLabel_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_2.TextSize = 25.000
+
+Frame.Parent = CreditsFrame
+Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Frame.BorderSizePixel = 0
+Frame.Position = UDim2.new(0.0201005023, 0, 0.323008835, 0)
+Frame.Size = UDim2.new(0, 284, 0, -5)
+
+TextLabel_3.Parent = CreditsFrame
+TextLabel_3.BackgroundColor3 = Color3.fromRGB(40, 39, 40)
+TextLabel_3.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel_3.BorderSizePixel = 0
+TextLabel_3.Position = UDim2.new(0.0100502511, 0, 0.3539823, 0)
+TextLabel_3.Size = UDim2.new(0, 226, 0, 50)
+TextLabel_3.Font = Enum.Font.SourceSans
+TextLabel_3.Text = "ui - made by harkinian"
+TextLabel_3.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_3.TextSize = 25.000
+
+SettingsFrame.Name = "SettingsFrame"
+SettingsFrame.Parent = FEhaxText
+SettingsFrame.BackgroundColor3 = Color3.fromRGB(40, 39, 40)
+SettingsFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+SettingsFrame.BorderSizePixel = 0
+SettingsFrame.Position = UDim2.new(0, 0, 1, 0)
+SettingsFrame.Size = UDim2.new(0, 398, 0, 226)
+SettingsFrame.Visible = false
+
+TextButton_10.Parent = SettingsFrame
+TextButton_10.BackgroundColor3 = Color3.fromRGB(94, 92, 96)
+TextButton_10.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextButton_10.BorderSizePixel = 0
+TextButton_10.Position = UDim2.new(0.0477386937, 0, 0.101769909, 0)
+TextButton_10.Size = UDim2.new(0, 349, 0, 31)
+TextButton_10.Font = Enum.Font.SourceSans
+TextButton_10.Text = "Low Block"
+TextButton_10.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton_10.TextSize = 20.000
+
+TextButton2.Name = "TextButton2"
+TextButton2.Parent = SettingsFrame
+TextButton2.BackgroundColor3 = Color3.fromRGB(94, 92, 96)
+TextButton2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextButton2.BorderSizePixel = 0
+TextButton2.Position = UDim2.new(0.0477386937, 0, 0.336283177, 0)
+TextButton2.Size = UDim2.new(0, 349, 0, 31)
+TextButton2.Font = Enum.Font.SourceSans
+TextButton2.Text = "Medium Block"
+TextButton2.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton2.TextSize = 20.000
+
+-- Scripts:
+
+local function SQYQYQ_fake_script() -- CloseOpen.LocalScript 
+	local script = Instance.new('LocalScript', CloseOpen)
+
+	function d()
+		local a = script.Parent.Parent.FEhaxText
+		a.Visible = not a.Visible  -- Toggle the visibility
+	end
+	
+	local b = script.Parent
+	b.MouseButton1Click:Connect(d)
+	
+end
+coroutine.wrap(SQYQYQ_fake_script)()
+local function TOHPTWH_fake_script() -- TextButton.LocalScript 
+	local script = Instance.new('LocalScript', TextButton)
+
+	local Players = game.Players
+	local textbox = script.Parent.Parent.TextBox
+	local function OnClick()
+		for i,v in pairs(Players:GetPlayers()) do
+			if string.find(v.Name, textbox.Text) then
+				for i,v in pairs(v.Character:GetChildren()) do
+					if v:IsA("BasePart") then
+						v:Destroy()
+					end
+				end
+			elseif string.find(textbox.Text, "all") then
+				for i,v in pairs(v.Character:GetChildren()) do
+					if v:IsA("BasePart") then
+						v:Destroy()
+					end
+				end
+			end
+		end
+	end
+	
+	local button = script.Parent
+	button.MouseButton1Click:Connect(OnClick)
+	
+end
+coroutine.wrap(TOHPTWH_fake_script)()
+local function YNMNPG_fake_script() -- TextButton_2.LocalScript 
+	local script = Instance.new('LocalScript', TextButton_2)
+
+	local button = script.Parent
+	local e = script.Parent.Parent.TextBox
+	local function OnClick()
+		 for i,v in pairs(game.Players:GetPlayers()) do
+			if string.find(v.Name, e.Text) then
+				local h = v.Character.Humanoid
+				local anim = Instance.new("Animation")
+				anim.AnimationId = "rbxassetid://33796059"
+				local t = h:LoadAnimation(anim)
+				t:Play(50,50,50)
+		    end
+		end
+	end
+	
+	button.MouseButton1Click:Connect(OnClick)
+	
+end
+coroutine.wrap(YNMNPG_fake_script)()
+local function MORG_fake_script() -- TextButton_3.LocalScript 
+	local script = Instance.new('LocalScript', TextButton_3)
+
+	local button = script.Parent
+	local textbox = script.Parent.Parent.TextBox
+	
+	
+	local function OnClick()
+		for i,v in pairs(game.Players:GetPlayers()) do
+			if string.find(v.Name, textbox.Text) then
+				for i,v in pairs(v.Character:GetDescendants()) do
+					if v:IsA("BasePart") then
+						v.Transparency = 1
+					end
+				end
+			end
+		end
+		
+	end
+	button.MouseButton1Click:Connect(OnClick)
+end
+coroutine.wrap(MORG_fake_script)()
+local function JSHUHSQ_fake_script() -- TextButton_4.LocalScript 
+	local script = Instance.new('LocalScript', TextButton_4)
+
+	local button = script.Parent
+	local Players = game.Players
+	local function OnClick()
+		coroutine.wrap(function()
+			while wait() do
+				game.Players.LocalPlayer.MaximumSimulationRadius = math.huge
+				game.Players.LocalPlayer.SimulationRadius = math.huge
+			end	
+		end)
+		for i,v in pairs(Players.LocalPlayer.Character:GetDescendants()) do
+			if v:IsA("SpecialMesh") then
+					v:Destroy()
+			end
+		end
+	end
+	
+	button.MouseButton1Click:Connect(OnClick)
+end
+coroutine.wrap(JSHUHSQ_fake_script)()
+local function FJSJRFG_fake_script() -- TextButton_5.LocalScript 
+	local script = Instance.new('LocalScript', TextButton_5)
+
+	local button = script.Parent
+	local remoteEvents = {}
+	local remoteFunctions = {}
+	local textbox = script.Parent.Parent.TextBox
+	
+	local function OnClick() 
+	
+		remoteEvents = {}
+		remoteFunctions = {}
+	
+	
+		for _, v in pairs(game.ReplicatedStorage:GetDescendants()) do
+			if v:IsA("RemoteEvent") and #remoteEvents < 500 then
+				table.insert(remoteEvents, v)
+			elseif v:IsA("RemoteFunction") and #remoteFunctions < 500 then
+				table.insert(remoteFunctions, v)
+			end
+		end
+	
+	
+		for _, remoteFunction in ipairs(remoteFunctions) do
+			coroutine.wrap(function()
+				remoteFunction:InvokeServer(textbox.Text)
+			end)()
+		end
+	
+	
+		for _, remoteEvent in ipairs(remoteEvents) do
+			coroutine.wrap(function()
+				remoteEvent:FireServer(textbox.Text)
+			end)()
+		end
+	end
+	
+	button.MouseButton1Click:Connect(OnClick)
+	
+end
+coroutine.wrap(FJSJRFG_fake_script)()
+local function KNNHRI_fake_script() -- TextButton_6.LocalScript 
+	local script = Instance.new('LocalScript', TextButton_6)
+
+	local button = script.Parent
+	local e = script.Parent.Parent.TextBox
+	local function OnClick()
+		for i,v in pairs(game.Players:GetPlayers()) do
+			if string.find(v.Name, e.Text) then
+				local h = v.Character.Humanoid
+				local anim = Instance.new("Animation")
+				anim.AnimationId = "rbxassetid://429703734"
+				local t = h:LoadAnimation(anim)
+				t:Play()
+			end
+		end
+	end
+	
+	button.MouseButton1Click:Connect(OnClick)
+end
+coroutine.wrap(KNNHRI_fake_script)()
+local function CZXDGMY_fake_script() -- TextButton_7.LocalScript 
+	local script = Instance.new('LocalScript', TextButton_7)
+
+	local button = script.Parent
+	local e = script.Parent.Parent.TextBox
+	local function OnClick()
+		for i,v in pairs(game.Players:GetPlayers()) do
+			if string.find(v.Name, e.Text) then
+				local h = v.Character.Humanoid
+				local anim = Instance.new("Animation")
+				anim.AnimationId = "rbxassetid://121572214"
+				local t = h:LoadAnimation(anim)
+				t:Play(50,50,50)
+			end
+		end
+	end
+	
+	button.MouseButton1Click:Connect(OnClick)
+end
+coroutine.wrap(CZXDGMY_fake_script)()
+local function GHNZW_fake_script() -- TextButton1.LocalScript 
+	local script = Instance.new('LocalScript', TextButton1)
+
+	local oterbutton = script.Parent.Parent.Parent.Stop.TextButton
+	local maxblock = 100000000
+	local nope = false
+	local tab = {}
+	local char = game.Players.LocalPlayer.Character
+	
+	script.Parent.MouseButton1Click:Connect(function()
+		nope = false
+		script.Parent.Parent.Parent.mainscript.Visible = false
+		script.Parent.Parent.Parent.Stop.Visible = true
+		
+	
+	if char:FindFirstChildWhichIsA("Humanoid").RigType == Enum.HumanoidRigType.R15 then
+			oterbutton.MouseButton1Click:Connect(function()
+				nope = true
+			end)
+	
+		local p = Instance.new("Part",game.Players.LocalPlayer.Character)p.Name = "e"
+		p.Anchored = true
+		p.Transparency = 1
+		p.CFrame = game.Players.LocalPlayer.Character.Head.CFrame * CFrame.new(0,1,0)
+		p.CanCollide = false
+	
+		for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+			if v:IsA("BasePart") and v.Name ~= "e" then
+				v:Destroy()	
+			end
+		end
+	
+		for i = 1,maxblock do
+			if nope then
+				break
+			end
+			
+			local p = Instance.new("Part",workspace)
+			p.Size = Vector3.new(2,2,2)
+			p.Position = game.Players.LocalPlayer.Character.e.Position + Vector3.new(0,i * 1,0)
+			p.TopSurface = "Smooth"
+			p.BottomSurface = "Smooth"
+			task.wait(0)
+		end
+		p:Destroy()
+		elseif char:FindFirstChildWhichIsA("Humanoid").RigType == Enum.HumanoidRigType.R6 then
+		nope = false
+	
+			oterbutton.MouseButton1Click:Connect(function()
+				nope = true
+			end)
+			local p = Instance.new("Part",game.Players.LocalPlayer.Character)p.Name = "e"
+			p.Anchored = true
+			p.Transparency = 1
+			p.CFrame = game.Players.LocalPlayer.Character.Head.CFrame * CFrame.new(0,1,0)
+			p.CanCollide = false
+			
+			for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+				if v:IsA("BasePart") and v.Name ~= "e" then
+					v:Destroy()	
+				end
+			end
+			
+			for i = 1,maxblock do
+				if nope then 
+					break
+				end
+				local p = Instance.new("Part",workspace)
+				p.Size = Vector3.new(1,2,1)
+				p.Position = game.Players.LocalPlayer.Character.e.Position + p.Position + Vector3.new(0,i * 1,0)
+				--p.Position = game.Players.LocalPlayer.Character.e.Position + Vector3.new(0,i * 1,0)
+				p.Rotation = Vector3.new(0,0,math.random(70,90))
+				p.TopSurface = "Smooth"
+				p.BottomSurface = "Smooth"
+				table.insert(tab , p)
+				task.wait(nil)
+			end
+			
+	
+			p:Destroy()
+		end
+		
+	end)
+end
+coroutine.wrap(GHNZW_fake_script)()
+-- TextButton1.LocalScript is disabled.
+local function XGBALP_fake_script() -- TextButton_8.LocalScript 
+	local script = Instance.new('LocalScript', TextButton_8)
+
+	local button = script.Parent
+	local Animate = game.Players.LocalPlayer.Character.Animate
+	local function OnClick()
+		if Animate then 
+			game.Players.LocalPlayer.Character.Animate:Destroy()
+		end
+	end
+	
+	button.MouseButton1Click:Connect(OnClick)
+end
+coroutine.wrap(XGBALP_fake_script)()
+local function PJSR_fake_script() -- TextButton_9.LocalScript 
+	local script = Instance.new('LocalScript', TextButton_9)
+
+	script.Parent.MouseButton1Click:Connect(function()
+		script.Parent.Parent.Parent.mainscript.Visible = true
+		script.Parent.Parent.Parent.Stop.Visible = false
+	end)
+end
+coroutine.wrap(PJSR_fake_script)()
+local function YNEAPE_fake_script() -- Commands.LocalScript 
+	local script = Instance.new('LocalScript', Commands)
+
+	local TweenService = game:GetService("TweenService")
+	local a = script.Parent.Parent.line
+	
+	local function Show()
+		for i,v in pairs(script.Parent.Parent.Parent.FEhaxText:GetChildren()) do
+			if v:IsA("Frame") then
+				if v.Name ~= "line" then
+					v.Visible = false
+					v.Parent.mainscript.Visible = true
+	
+					local targetPosition = script.Parent.Position + UDim2.new(0,0,0.4,0)
+	
+					local tweenInfo = TweenInfo.new(0.5)
+					local tween = TweenService:Create(a, tweenInfo, {Position = targetPosition})
+	
+					tween:Play()
+				end
+			end
+		end
+		-- script.Parent.Parent.FEhaxText.mainscript.Visible = true
+	end
+	
+	b = script.Parent
+	b.MouseButton1Click:Connect(Show)
+end
+coroutine.wrap(YNEAPE_fake_script)()
+local function HBZZ_fake_script() -- CREDITS.LocalScript 
+	local script = Instance.new('LocalScript', CREDITS)
+
+	local TweenService = game:GetService("TweenService")
+	local a = script.Parent.Parent.line
+	
+	local function Show()
+		for i,v in pairs(script.Parent.Parent.Parent.FEhaxText:GetChildren()) do
+			if v:IsA("Frame") then
+				if v.Name ~= "line" then
+					v.Visible = false
+					v.Parent.CreditsFrame.Visible = true
+	
+					local targetPosition = script.Parent.Position + UDim2.new(0,0,0.411,0)
+	
+					local tweenInfo = TweenInfo.new(0.5)
+					local tween = TweenService:Create(a, tweenInfo, {Position = targetPosition})
+	
+					tween:Play()
+				end
+			end
+		end
+		-- script.Parent.Parent.FEhaxText.CreditFrame.Visible = true
+	end
+	
+	b = script.Parent
+	b.MouseButton1Click:Connect(Show)
+end
+coroutine.wrap(HBZZ_fake_script)()
+local function NVTU_fake_script() -- SETTINGS.LocalScript 
+	local script = Instance.new('LocalScript', SETTINGS)
+
+	local TweenService = game:GetService("TweenService")
+	local a = script.Parent.Parent.line
+	
+	local function Show()
+	
+		for i,v in pairs(script.Parent.Parent.Parent.FEhaxText:GetChildren()) do
+			if v:IsA("Frame") then
+				if v.Name ~= "line" then
+					v.Visible = false
+					v.Parent.SettingsFrame.Visible = true
+	
+					-- a.AnchorPoint = Vector2.new(-2, -5)
+					local targetPosition = script.Parent.Position + UDim2.new(0,0,0.4,0)
+	
+					local tweenInfo = TweenInfo.new(0.5)
+					local tween = TweenService:Create(a, tweenInfo, {Position = targetPosition})
+	
+					tween:Play()
+	
+				end
+			end
+		end
+		-- script.Parent.Parent.FEhaxText.SettingsFrame.Visible = true
+	end
+	
+	b = script.Parent
+	b.MouseButton1Click:Connect(Show)
+end
+coroutine.wrap(NVTU_fake_script)()
+local function RPQC_fake_script() -- TextButton_10.LocalScript 
+	local script = Instance.new('LocalScript', TextButton_10)
+
+	local lowtext = script.Parent.Parent.Parent.Stop.LowText
+	local medtext = script.Parent.Parent.Parent.Stop["Medium Text"]
+	local medscript = script.Parent.Parent.Parent.mainscript.TextButton1:GetChildren()[2]
+	local lowscript = script.Parent.Parent.Parent.mainscript.TextButton1:GetChildren()[1]
+	script.Parent.MouseButton1Click:Connect(function()
+		lowtext.Visible = true
+		lowscript.Enabled = true
+		medscript.Enabled = false
+		medtext.Visible = false
+	end)
+end
+coroutine.wrap(RPQC_fake_script)()
+local function MBZX_fake_script() -- TextButton2.LocalScript 
+	local script = Instance.new('LocalScript', TextButton2)
+
+	local lowtext = script.Parent.Parent.Parent.Stop.LowText
+	local medtext = script.Parent.Parent.Parent.Stop["Medium Text"]
+	local medscript = script.Parent.Parent.Parent.mainscript.TextButton1:GetChildren()[2]
+	local lowscript = script.Parent.Parent.Parent.mainscript.TextButton1:GetChildren()[1]
+	script.Parent.MouseButton1Click:Connect(function()
+		lowtext.Visible = false
+		lowscript.Enabled = false
+		medscript.Enabled = true
+		medtext.Visible = true
+	end)
+end
+coroutine.wrap(MBZX_fake_script)()
+local function FMKRG_fake_script() -- DragUi.LocalScript 
+	local script = Instance.new('LocalScript', DragUi)
+
+	local UserInputService = game:GetService("UserInputService")
+	
+	local gui = script.Parent
+	
+	local dragging
+	local dragInput
+	local dragStart
+	local startPos
+	
+	local function update(input)
+		local delta = input.Position - dragStart
+		gui.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+	end
+	
+	gui.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+			dragging = true
+			dragStart = input.Position
+			startPos = gui.Position
+	
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					dragging = false
+				end
+			end)
+		end
+	end)
+	
+	gui.InputChanged:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+			dragInput = input
+		end
+	end)
+	
+	UserInputService.InputChanged:Connect(function(input)
+		if input == dragInput and dragging then
+			update(input)
+		end
+	end)
+end
+coroutine.wrap(FMKRG_fake_script)()
