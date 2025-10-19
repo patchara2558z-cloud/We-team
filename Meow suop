@@ -1,0 +1,379 @@
+local player = game.Players.LocalPlayer
+local char = player.Character or player.CharacterAdded:Wait()
+
+Mjolnir = Instance.new("Tool")
+Mjolnir.Name = "Mjolnir"
+Mjolnir.Parent = player.Backpack
+
+Handle = Instance.new("Part")
+Handle.Parent = Mjolnir
+Handle.Anchored = false
+Handle.Name = "Handle"
+Handle.CanCollide = true
+Handle.Size = Vector3.new(1.000000, 4.000000, 2.000000)
+Handle.CFrame = CFrame.new(6.424833297729492, 1.9891911745071411, -23.33095932006836, -0.006068193819373846, -0.00023975562362466007, -0.9999815821647644, 0.00041880097705870867, 0.9999998807907104, -0.00024230143753811717, 0.9999815225601196, -0.0004202635900583118, -0.0060680927708745)
+Handle.Color = Color3.new(0.388235, 0.372549, 0.384314)
+Handle.Material = Enum.Material.Plastic
+Handle.BrickColor = BrickColor.new("Dark stone grey")
+Handle.Transparency = 0
+Handle.Reflectance = 0
+Handle.Shape = Enum.PartType.Block
+Boom = Instance.new("Sound")
+Boom.Parent = Handle
+Boom.SoundId = "rbxasset://sounds/Rocket shot.wav"
+Boom.Volume = 1
+Boom.Name = "Boom"
+Boom.PlaybackSpeed = 1
+Boom.Looped = false
+Boom.Playing = false
+Boom.TimePosition = 0
+Boom.RollOffMaxDistance = 10000
+Boom.RollOffMinDistance = 10
+Boom.RollOffMode = Enum.RollOffMode.Inverse
+Boom.EmitterSize = 10
+Mesh = Instance.new("SpecialMesh")
+Mesh.Parent = Handle
+Mesh.Name = "Mesh"
+Mesh.MeshId = "http://www.roblox.com/asset/?id=1279013"
+Mesh.TextureId = "http://www.roblox.com/asset/?id=1279012"
+Mesh.Offset = Vector3.new(0.000000, 0.000000, 0.000000)
+Mesh.Scale = Vector3.new(1.050000, 1.050000, 1.050000)
+Mesh.MeshType = Enum.MeshType.FileMesh
+
+SwingAnim = Instance.new("Animation")
+SwingAnim.Name = "SwingAnim"
+SwingAnim.Parent = Mjolnir
+
+script.Parent = Mjolnir
+local rs = game:GetService("RunService")
+
+local Tool = script.Parent
+local hammer = Tool.Handle
+
+local shockRing = Instance.new("Part")
+shockRing.formFactor = 2
+shockRing.Size = Vector3.new(1, 0.4, 1)
+shockRing.Anchored = true
+shockRing.Locked = true
+shockRing.CanCollide = false
+shockRing.archivable = false
+shockRing.TopSurface = 0
+shockRing.BottomSurface = 0
+shockRing.Transparency = 1
+local decal = Instance.new("Decal")
+decal.Face = 1
+decal.Texture = "http://www.roblox.com/asset/?version=1&id=1280730"
+decal.Parent = shockRing
+
+local bottomDecal = decal:Clone()
+bottomDecal.Face = 4
+bottomDecal.Parent = shockRing
+
+local partCache = {}
+
+local function addPart(part)
+	if part:IsA("BasePart") then
+		partCache[#partCache+1] = part
+	end
+end
+
+local function recurseParts(obj)
+	for _,v in pairs(obj:GetChildren()) do
+		addPart(v)
+		recurseParts(v)
+	end
+end
+
+recurseParts(workspace)
+workspace.DescendantAdded:connect(addPart)
+
+local function spawn(func,...)
+	local b = Instance.new("BindableEvent")
+	b.Event:connect(func)
+	b:Fire(...)
+end
+
+local function fastWait(t)
+	local t = t or 0.03
+	local now = tick()
+	while (tick() - now) < t do
+		rs.Stepped:wait()
+	end
+end
+
+function doDamage(hit)
+	local humanoid = hit.Parent:findFirstChild("Humanoid")
+	local vCharacter = char
+	local vPlayer = player
+	local hum = vCharacter:findFirstChild("Humanoid") -- non-nil if tool held by a character
+	if humanoid~=nil and humanoid ~= hum and hum ~= nil then
+		humanoid:TakeDamage(humanoid.MaxHealth)
+		if humanoid.Health <= 0 then
+			local c = hit.CFrame
+			hit.CFrame = CFrame.new(hit.Position)
+			hit.CFrame = c
+		end
+	end
+end
+
+local XZ_Vector = Vector3.new(1,0,1)
+local upOffset = Vector3.new(0,0.5,0)
+local abs = math.abs
+
+function blow(objPos, char)
+	for _,obj in pairs(partCache) do
+		if not obj:IsDescendantOf(char) and not obj.Anchored and obj.Size.magnitude < 96 then
+			local pos = obj.Position
+			local offset = (pos - objPos) * XZ_Vector
+			if (offset.magnitude < 96) and abs(objPos.y-pos.y) <= 8 then
+				spawn(function ()
+					fastWait(offset.magnitude / 96)
+					doDamage(obj)
+					obj:BreakJoints()
+					obj.Velocity = obj.Velocity + ((offset.unit + Vector3.new(0,0.5,0)) * 96)
+					obj.RotVelocity = obj.RotVelocity + (offset.unit * 40)
+				end)
+			end
+		end
+	end
+end
+
+function attack()
+	damage = slash_damage
+	local anim = Instance.new("StringValue")
+	anim.Name = "toolanim"
+	anim.Value = "Slash"
+	anim.Parent = Tool
+	wait(0.2)
+
+	print("Blasting!")
+
+	local pos = hammer.CFrame * (Vector3.new(0, 1.4, 0) * hammer.Mesh.Scale)
+
+	blow(pos, char)
+
+	shockRing.CFrame = CFrame.new(pos)
+	shockRing.Parent = workspace
+	local rs = game:GetService("RunService")
+	for x = 1, 29 do
+		shockRing.Size = Vector3.new(0, 0.4, 0) + Vector3.new(6.4, 0, 6.4) * x
+		fastWait()
+	end
+	shockRing.Parent = nil
+end
+
+
+Tool.Enabled = true
+function onActivated()
+
+	if not Tool.Enabled then
+		return
+	end
+
+	Tool.Enabled = false
+
+	local character = char;
+	local humanoid = character.Humanoid
+	if humanoid == nil then
+		print("Humanoid not found")
+		return 
+	end
+
+	hammer.Boom:Play()
+	attack()
+
+	wait(0.5)
+
+	Tool.Enabled = true
+end
+
+
+script.Parent.Activated:connect(onActivated)
+--script.Parent.Equipped:connect(onEquipped)
+
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+
+local GrandGui = Instance.new("ScreenGui")
+GrandGui.Name = "GrandGui"
+GrandGui.ResetOnSpawn=false
+GrandGui.Parent = player:WaitForChild("PlayerGui")
+
+local Frame = Instance.new("Frame")
+Frame.Name = "Frame"
+Frame.Parent = GrandGui
+Frame.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+Frame.BackgroundTransparency = 0
+Frame.BorderColor3 = Color3.fromRGB(27, 42, 53)
+Frame.BorderSizePixel = 0
+Frame.Position = UDim2.new(0.05000000819563866, 0, 0.5856353640556335, 0)
+Frame.Size = UDim2.new(0, 150, 0, 100)
+Frame.AnchorPoint = Vector2.new(0, 0)
+Frame.Visible = true
+Frame.ZIndex = 1
+Frame.ClipsDescendants = false
+Frame.LayoutOrder = 0
+Frame.Active = true
+
+local TextBoxTemplate = Instance.new("Frame")
+TextBoxTemplate.Name = "TextBoxTemplate"
+TextBoxTemplate.Parent = Frame
+TextBoxTemplate.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextBoxTemplate.BackgroundTransparency = 1
+TextBoxTemplate.BorderColor3 = Color3.fromRGB(27, 42, 53)
+TextBoxTemplate.BorderSizePixel = 1
+TextBoxTemplate.Position = UDim2.new(0, 0, 0.09696969389915466, 0)
+TextBoxTemplate.Size = UDim2.new(1, 0, 0, 50)
+TextBoxTemplate.AnchorPoint = Vector2.new(0, 0)
+TextBoxTemplate.Visible = true
+TextBoxTemplate.ZIndex = 1
+TextBoxTemplate.ClipsDescendants = false
+TextBoxTemplate.LayoutOrder = 0
+TextBoxTemplate.Active = false
+TextBoxTemplate.Active=true
+TextBoxTemplate.Draggable=true
+
+local Box = Instance.new("TextBox")
+Box.Name = "Box"
+Box.Parent = TextBoxTemplate
+Box.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+Box.BackgroundTransparency = 0
+Box.BorderColor3 = Color3.fromRGB(30, 30, 30)
+Box.BorderSizePixel = 0
+Box.TextYAlignment = Enum.TextYAlignment.Center
+Box.TextXAlignment = Enum.TextXAlignment.Center
+Box.Position = UDim2.new(0, 5, 0, 62)
+Box.Size = UDim2.new(1, -10, -0.013000000268220901, 25)
+Box.Font = Enum.Font.SourceSans
+Box.Text = "0"
+Box.TextColor3 = Color3.fromRGB(255, 255, 255)
+Box.TextSize = 14
+Box.TextScaled = false
+Box.TextWrapped = false
+Box.TextTransparency = 0
+Box.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
+Box.TextStrokeTransparency = 1
+Box.AnchorPoint = Vector2.new(0, 0)
+Box.Visible = true
+Box.ZIndex = 1
+Box.ClipsDescendants = false
+Box.LayoutOrder = 0
+Box.ClearTextOnFocus = true
+Box.PlaceholderText = ""
+Box.PlaceholderColor3 = Color3.fromRGB(200, 200, 200)
+Box.MultiLine = false
+Box.Active = true
+Box.LineHeight = 1
+Box.CursorPosition = 1
+Box.TextEditable = true
+Box.MaxVisibleGraphemes = -1
+
+local UICorner = Instance.new("UICorner")
+UICorner.Name = "UICorner"
+UICorner.Parent = Box
+UICorner.CornerRadius = UDim.new(0, 8)
+
+local TextLabel = Instance.new("TextLabel")
+TextLabel.Name = "TextLabel"
+TextLabel.Parent = TextBoxTemplate
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.BackgroundTransparency = 1
+TextLabel.BorderColor3 = Color3.fromRGB(27, 42, 53)
+TextLabel.BorderSizePixel = 1
+TextLabel.TextYAlignment = Enum.TextYAlignment.Center
+TextLabel.TextXAlignment = Enum.TextXAlignment.Center
+TextLabel.Position = UDim2.new(0, 5, 0, 42)
+TextLabel.Size = UDim2.new(1, -10, 0, 20)
+TextLabel.Font = Enum.Font.SourceSans
+TextLabel.Text = "Max Anchored Mass"
+TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.TextSize = 14
+TextLabel.TextScaled = false
+TextLabel.TextWrapped = false
+TextLabel.TextTransparency = 0
+TextLabel.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel.TextStrokeTransparency = 1
+TextLabel.AnchorPoint = Vector2.new(0, 0)
+TextLabel.Visible = true
+TextLabel.ZIndex = 1
+TextLabel.ClipsDescendants = false
+TextLabel.LayoutOrder = 0
+TextLabel.Active = false
+TextLabel.LineHeight = 1
+TextLabel.MaxVisibleGraphemes = -1
+
+local UICorner = Instance.new("UICorner")
+UICorner.Name = "UICorner"
+UICorner.Parent = Frame
+UICorner.CornerRadius = UDim.new(0, 8)
+
+local Title = Instance.new("TextLabel")
+Title.Name = "Title"
+Title.Parent = Frame
+Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Title.BackgroundTransparency = 1
+Title.BorderColor3 = Color3.fromRGB(27, 42, 53)
+Title.BorderSizePixel = 1
+Title.TextYAlignment = Enum.TextYAlignment.Center
+Title.TextXAlignment = Enum.TextXAlignment.Center
+Title.Position = UDim2.new(0, 5, 0, 0)
+Title.Size = UDim2.new(1, -10, 0, 25)
+Title.Font = Enum.Font.SourceSansBold
+Title.Text = "Mjolnir"
+Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title.TextSize = 14
+Title.TextScaled = false
+Title.TextWrapped = false
+Title.TextTransparency = 0
+Title.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
+Title.TextStrokeTransparency = 1
+Title.AnchorPoint = Vector2.new(0, 0)
+Title.Visible = true
+Title.ZIndex = 1
+Title.ClipsDescendants = false
+Title.LayoutOrder = 0
+Title.Active = false
+Title.LineHeight = 1
+Title.MaxVisibleGraphemes = -1
+
+local ButtonTemplate = Instance.new("TextButton")
+ButtonTemplate.Name = "ButtonTemplate"
+ButtonTemplate.Parent = Frame
+ButtonTemplate.BackgroundColor3 = Color3.fromRGB(0, 135, 203)
+ButtonTemplate.BackgroundTransparency = 0
+ButtonTemplate.BorderColor3 = Color3.fromRGB(27, 42, 53)
+ButtonTemplate.BorderSizePixel = 1
+ButtonTemplate.TextYAlignment = Enum.TextYAlignment.Center
+ButtonTemplate.TextXAlignment = Enum.TextXAlignment.Center
+ButtonTemplate.Position = UDim2.new(0, 5, 1.646083950996399, -140)
+ButtonTemplate.Size = UDim2.new(1, -10, -0.013475341722369194, 25)
+ButtonTemplate.Font = Enum.Font.SourceSans
+ButtonTemplate.Text = "Destroy Anchored: Off"
+ButtonTemplate.TextColor3 = Color3.fromRGB(255, 255, 255)
+ButtonTemplate.TextSize = 14
+ButtonTemplate.TextScaled = false
+ButtonTemplate.TextWrapped = false
+ButtonTemplate.TextTransparency = 0
+ButtonTemplate.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
+ButtonTemplate.TextStrokeTransparency = 1
+ButtonTemplate.AnchorPoint = Vector2.new(0, 0)
+ButtonTemplate.Visible = true
+ButtonTemplate.ZIndex = 1
+ButtonTemplate.ClipsDescendants = false
+ButtonTemplate.LayoutOrder = 0
+ButtonTemplate.Active = true
+ButtonTemplate.LineHeight = 1
+ButtonTemplate.MaxVisibleGraphemes = -1
+ButtonTemplate.MouseButton1Click:Connect(function()
+    if ButtonTemplate.Text == "Destroy Anchored: Off" then
+        ButtonTemplate.Text = "Destroy Anchored: On"
+    else
+        ButtonTemplate.Text = "Destroy Anchored: Off"
+    end
+end)
+
+
+local UICorner = Instance.new("UICorner")
+UICorner.Name = "UICorner"
+UICorner.Parent = ButtonTemplate
+UICorner.CornerRadius = UDim.new(0, 8)
