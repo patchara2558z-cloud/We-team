@@ -1,0 +1,180 @@
+local player = game.Players.LocalPlayer
+local gui = Instance.new("ScreenGui")
+gui.Name = "Project Q2XI1MP2M9"
+gui.ResetOnSpawn = false
+gui.Parent = player:WaitForChild("PlayerGui")
+
+local function createButton(parent, text, posY, onClick)
+    local button = Instance.new("TextButton")
+    button.Size = UDim2.new(0, 280, 0, 30)
+    button.Position = UDim2.new(0, 10, 0, posY)
+    button.BackgroundColor3 = Color3.fromRGB(0, 255, 255)
+    button.TextColor3 = Color3.fromRGB(0, 0, 0)
+    button.Font = Enum.Font.Legacy
+    button.Text = text
+    button.TextScaled = true
+    button.Parent = parent
+
+    if onClick then
+        button.MouseButton1Click:Connect(onClick)
+    end
+end
+
+local function createPage(name, titleText)
+    local frame = Instance.new("Frame")
+    frame.Size = UDim2.new(0, 300, 0, 400)
+    frame.Position = UDim2.new(0.5, -150, 0.5, -200)
+    frame.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+    frame.BorderSizePixel = 3
+    frame.Active = true
+    frame.Draggable = true
+    frame.Visible = false
+    frame.Name = name
+    frame.Parent = gui
+
+    local title = Instance.new("TextLabel")
+    title.Size = UDim2.new(1, 0, 0, 40)
+    title.Position = UDim2.new(0, 0, 0, 0)
+    title.BackgroundColor3 = Color3.fromRGB(17, 17, 17)
+    title.Text = titleText
+    title.TextColor3 = Color3.fromRGB(255, 255, 255)
+    title.Font = Enum.Font.SourceSansBold
+    title.TextScaled = true
+    title.Parent = frame
+
+    return frame
+end
+
+local pages = {}
+for i = 1, 6 do
+    pages[i] = createPage("Page"..i, "Project Megma v2 remake")
+end
+pages[1].Visible = true
+
+local scripts = {
+    [1] = {
+        {"Give Sword", "https://pastebin.com/raw/AZVi2tuK"},
+        {"polaria", "https://pastefy.app/agqEB2qs/raw"},
+        {"SSP", "https://pastefy.app/rlKZM87I/raw"},
+        {"sin dragon", "https://raw.githubusercontent.com/gitezgitgit/Sin-Dragon/refs/heads/main/Sin%20Dragon.lua.txt"},
+        {"sin unleashed", "https://raw.githubusercontent.com/gitezgitgit/Sin-Unleashed/refs/heads/main/Sin%20Unleashed.lua.txt"},
+        {"red sword", "https://raw.githubusercontent.com/ProBypasserHax1/Idkkk/refs/heads/main/Red%20Sword%20Pickaxe.txt"},
+        {"bomb vest v2", "https://raw.githubusercontent.com/ProBypasserHax1/Ussjzbwusbdlq/refs/heads/main/Luafile33Xc3eww"},
+        {"Sheldon", "https://rawscripts.net/raw/Universal-Script-Sheldoni-gui-29377"},
+    },
+    [2] = {
+        {"private gui", "https://pastebin.com/raw/BDguUuUx"},
+        {"steve", "https://pastebin.com/raw/a8WV8PiG"},
+        {"Project 007n7", "https://pastebin.com/raw/hEFh1qUC"},
+        {"Mario.exe", "https://pastebin.com/raw/Ljz3fwU2"},
+        {"yong Shelon gui 00de0l", "https://pastebin.com/raw/AGRcUvPm"},
+        {"Lua Hammer", "https://pastebin.com/raw/1AD0WNeJ"},
+        {"project ligma op script by3xen0", "https://raw.githubusercontent.com/3xen0kidd/By3xen0/refs/heads/main/obfuscated_script-1747821914559.lua.txt"},
+        {"ssp (i think is real)", "https://pastebin.com/raw/Eu81WV9S"},
+    },
+    [3] = {
+        {"sugma v1", "https://raw.githubusercontent.com/sigmaballs4141/asd/refs/heads/main/Sugma%20V1.txt"},
+        {"polaria upd", "https://raw.githubusercontent.com/Sugm4Bullet1/LuaXXccL/refs/heads/main/pol%20(2).txt"},
+        {"elysian v2", "https://raw.githubusercontent.com/MrWitzbold/Elysian-2.0-GUI/refs/heads/main/main.lua"},
+        {"dominant v5", "https://raw.githubusercontent.com/Sugm4Bullet1/LuaXXccL/refs/heads/main/dominatv5.0.1.txt"},
+        {"john doe ss", "https://raw.githubusercontent.com/Sugm4Bullet1/LuaXXccL/refs/heads/main/johndoeSS.txt"},
+        {"project Euphoria ui", "https://raw.githubusercontent.com/TEST19983/Realrhejrj/refs/heads/main/Refjf"},
+        {"project cat utlmate", "https://pastefy.app/RX1PYZs1/raw"},
+        {"private gui 00de0l", "https://pastefy.app/cVm0LBiJ/raw"},
+    },
+    [4] = {
+        {"Explosive Robot", "https://pastefy.app/ebiRyCkx/raw"},
+        {"project ball", "https://gist.githubusercontent.com/gagaamza/d5c91e99f7f31e450817c73de16f7e38/raw/855e5a40280cbeb5369d6c8c22243b0c35e9e735/gistfile1.txt"},
+        {"project box", "https://pastefy.app/33TjprCs/raw"},
+        {"Steve", "https://raw.githubusercontent.com/Test4267/steve/refs/heads/main/rare"},
+        {"Minecraft tool", "https://raw.githubusercontent.com/Ahma174/Tool/refs/heads/main/Minecraft%20Tools"},
+        {"meme tool", "https://raw.githubusercontent.com/Ahma174/Meme-Tools/refs/heads/main/Meme%20Tools%20V3.lua"},
+        {"red hypergun", "https://rawscripts.net/raw/Universal-Script-Red-hyperlaser-gun-24963"},
+        {"tool give", "https://pastefy.app/qpbQo0lr/raw"},
+    },
+    [5] = {
+        {"FE Hax GUI V2.0.2.1", "https://pastebin.com/raw/gr3XZwUY"},
+        {"RC7 Reawakened", "https://raw.githubusercontent.com/MrWitzbold/RC7_GUI/refs/heads/main/main.lua"},
+        {"Project fire", "https://pastebin.com/raw/a79VQ4ex"},
+    },
+    [6] = {
+        {"ssP Dex Explorer Version", "https://raw.githubusercontent.com/AbuRiffian/None-of-youre-buissness/refs/heads/main/idk"},
+        {"SsP Made by Erased_Luah4x", "https://raw.githubusercontent.com/ProBypasserHax1/Idkkk/refs/heads/main/SSP%20BY%20ME.lua"},
+        {"Red Sword PicAxe", "https://raw.githubusercontent.com/ProBypasserHax1/Idkkk/refs/heads/main/Red%20Sword%20Pickaxe.txt"},
+        {"Stummy Guns", "https://pastebin.com/raw/3XPaYv08"},
+        {"Obunga", "https://pastefy.app/ORe0fQ07/raw"},
+        {"Polaria By 00de0l", "https://pastefy.app/agqEB2qs/raw"},
+        {"MLG 2520 Gun", "https://rawscripts.net/raw/Client-Replication-the-ss-loadstring-script-27393"},
+        {"LuaMayG*y v4.1", "https://raw.githubusercontent.com/sigmaballs4141/asd/refs/heads/main/LuaMayGayV4.1.lua"},
+        {"Elsyian Executor", "https://pastebin.com/raw/CsFAQyXr"},
+        {"Private Gui by 005n5n77 1.5", "https://pastebin.com/raw/9XSYjVrm"},
+    },
+        {"1x1x1x1x1 Super Private Gui v5.40", "https://pastebin.com/raw/ERRk4rvM"},
+        {"Testing Hub By QnDx aka Polpy_Kid", "https://pastebin.com/raw/ERRk4rvM"},
+        {"SUGMA_V1", "https://raw.githubusercontent.com/sigmaballs4141/asd/refs/heads/main/Sugma%20V1.txt"},
+        {"Project LuaCore Serverside", "https://raw.githubusercontent.com/sigmaballs4141/asd/refs/heads/main/yesking"},
+        {"R15 to R6", "https://raw.githubusercontent.com/sigmaballs4141/asd/refs/heads/main/AOIWruw823rpo8n30"},
+        {"Project LuaCore SS", "https://raw.githubusercontent.com/sigmaballs4141/asd/refs/heads/main/Project%20LuaCore%20SS"},
+        {"Prison Life Hub By Shedletsky", "https://raw.githubusercontent.com/sigmaballs4141/asd/refs/heads/main/Shed%20Prison%20Hax"},
+        {"Anonymous Gui Reborn", "https://raw.githubusercontent.com/sigmaballs4141/asd/refs/heads/main/Anonymous%20Reborn%20By%2007n7z"},
+        {"LuaMayGay V2 Made By 07n7z", "https://raw.githubusercontent.com/sigmaballs4141/asd/refs/heads/main/LuaMayGayV2.txt"},
+        {"Polaria By 00de0l [UPDATED]", "https://raw.githubusercontent.com/Sugm4Bullet1/LuaXXccL/refs/heads/main/pol%20(2).txt"},
+    },
+        
+for pageIndex, scriptList in pairs(scripts) do
+    local page = pages[pageIndex]
+    for i, scriptData in ipairs(scriptList) do
+        local name, url = unpack(scriptData)
+        local posY = 60 + (i - 1) * 40
+        createButton(page, name, posY, function()
+            pcall(function()
+                loadstring(game:HttpGet(url, true))()
+            end)
+        end)
+    end
+end
+
+local function addSwitchButtons(currentPage, backPage, nextPage)
+    if backPage then
+        local back = Instance.new("TextButton")
+        back.Size = UDim2.new(0, 50, 0, 50)
+        back.AnchorPoint = Vector2.new(1, 1)
+        back.Position = UDim2.new(1, -70, 1, -10)
+        back.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+        back.Text = "<"
+        back.TextColor3 = Color3.fromRGB(255, 255, 255)
+        back.Font = Enum.Font.SourceSansBold
+        back.TextScaled = true
+        back.Parent = currentPage
+
+        back.MouseButton1Click:Connect(function()
+            currentPage.Visible = false
+            backPage.Visible = true
+        end)
+    end
+
+    if nextPage then
+        local next = Instance.new("TextButton")
+        next.Size = UDim2.new(0, 50, 0, 50)
+        next.AnchorPoint = Vector2.new(1, 1)
+        next.Position = UDim2.new(1, -10, 1, -10)
+        next.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+        next.Text = ">"
+        next.TextColor3 = Color3.fromRGB(255, 255, 255)
+        next.Font = Enum.Font.SourceSansBold
+        next.TextScaled = true
+        next.Parent = currentPage
+
+        next.MouseButton1Click:Connect(function()
+            currentPage.Visible = false
+            nextPage.Visible = true
+        end)
+    end
+end
+
+addSwitchButtons(pages[1], nil, pages[2])
+addSwitchButtons(pages[2], pages[1], pages[3])
+addSwitchButtons(pages[3], pages[2], pages[4])
+addSwitchButtons(pages[4], pages[3], pages[5])
+addSwitchButtons(pages[5], pages[4], pages[6])
+addSwitchButtons(pages[6], pages[5], pages[nli)
