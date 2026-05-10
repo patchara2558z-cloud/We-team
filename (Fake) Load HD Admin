@@ -1,0 +1,194 @@
+
+-- developer stage 
+
+
+
+local function HdLoader()
+ print("Please Wait For Load, Make By Team secret")
+    wait(1)
+local gui = Instance.new("ScreenGui")
+gui.Name = "Hd Admin Lua"
+gui.Parent = game.CoreGui
+
+local Load = Instance.new("Frame")
+Load.Size = UDim2.new(1, -169, 0, 48)
+Load.Position = UDim2.new(0, 167, 0, -48)
+Load.BackgroundColor3 = Color3.new(1, 1, 1)
+Load.BorderColor3 = Color3.new(0, 0, 0)
+Load.BorderSizePixel = 0
+Load.Active = false
+Load.BackgroundTransparency = 1.000
+Load.Draggable = false
+Load.Parent = gui
+
+local Hd = Instance.new("ImageButton")
+Hd.Size = UDim2.new(0.0, 40, 0.0, 40)
+Hd.Position = UDim2.new(0.0, 7, 0.0, 4)
+Hd.BackgroundColor3 = Color3.new(0, 0, 0)
+Hd.ImageColor3 = Color3.new(1, 1, 1)
+Hd.Image = "rbxassetid://72788797256625"
+Hd.ImageTransparency = 0
+Hd.Parent = Load
+
+Hd.BackgroundTransparency = 0
+
+local isOpen = false
+Hd.MouseButton1Click:Connect(function()
+	isOpen = not isOpen
+	if isOpen then
+		Hd.BackgroundTransparency = 0.3
+	else
+		Hd.BackgroundTransparency = 0
+	end
+end)
+
+local UICorner = Instance.new("UICorner")
+UICorner.CornerRadius = UDim.new(9, 9)
+UICorner.Parent = Hd
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.Color = Color3.new(0, 0, 0)
+UIStroke.Thickness = 2
+UIStroke.Parent = Hd
+
+local New = Instance.new("Frame")
+New.Size = UDim2.new(0, 290, 0, 79)
+New.Position = UDim2.new(1, 0, 1, -79)
+New.BackgroundColor3 = Color3.fromRGB(10, 10, 10)
+New.BorderColor3 = Color3.new(0, 0, 0)
+New.BorderSizePixel = 0
+New.Active = false
+New.BackgroundTransparency = 0.2
+New.Draggable = false
+New.Parent = gui
+
+local TopBar = Instance.new("Frame")
+TopBar.Size = UDim2.new(0.0, 250, 0.0, 22)
+TopBar.Position = UDim2.new(0.0, 0, 0.0, 0)
+TopBar.BackgroundColor3 = Color3.fromRGB(75, 75, 75)
+TopBar.BorderColor3 = Color3.new(0, 0, 0)
+TopBar.BorderSizePixel = 0
+TopBar.Active = false
+TopBar.BackgroundTransparency = 0.4
+TopBar.Draggable = false
+TopBar.Parent = New
+
+local Notice = Instance.new("TextLabel")
+Notice.Size = UDim2.new(0.0, 87, 0.0, 22)
+Notice.Position = UDim2.new(0.0, 0, 0.0, 0)
+Notice.BackgroundColor3 = Color3.new(0, 0, 0)
+Notice.BorderColor3 = Color3.new(0, 0, 0)
+Notice.BorderSizePixel = 0
+Notice.Text = "HD Admin"
+Notice.BackgroundTransparency = 1
+Notice.TextColor3 = Color3.new(1, 1, 1)
+Notice.TextSize = 20
+Notice.Parent = TopBar
+Notice.FontFace = Font.new(
+    "rbxasset://fonts/families/HighwayGothic.json",
+    Enum.FontWeight.Regular,
+    Enum.FontStyle.Normal
+)
+
+local CloseX = Instance.new("TextButton")
+CloseX.Size = UDim2.new(0.0, 22, 0.0, 22)
+CloseX.Position = UDim2.new(0.0, 228, 0.0, 0)
+CloseX.BackgroundColor3 = Color3.new(0, 0, 0)
+CloseX.BorderColor3 = Color3.new(0, 0, 0)
+CloseX.BorderSizePixel = 0
+CloseX.Text = "X"
+CloseX.BackgroundTransparency = 0 
+CloseX.TextSize = 15
+CloseX.TextColor3 = Color3.new(255, 255, 255)
+CloseX.FontFace = Font.new(
+    "rbxasset://fonts/families/HighwayGothic.json",
+    Enum.FontWeight.Regular,
+    Enum.FontStyle.Normal
+)
+CloseX.Parent = TopBar
+
+local Desc = Instance.new("TextLabel")
+Desc.Size = UDim2.new(0.0, 250, 0.0, 59)
+Desc.Position = UDim2.new(0.0, 0, 0.0, 22)
+Desc.BackgroundColor3 = Color3.new(0, 0, 0)
+Desc.BorderColor3 = Color3.new(0, 0, 0)
+Desc.BorderSizePixel = 0
+Desc.Text = "You've been permRanked\nto'Owner'!"
+Desc.BackgroundTransparency = 1
+Desc.TextSize = 20
+Desc.TextColor3 = Color3.new(1, 1, 1)
+Desc.Font = Enum.Font.Arial
+Desc.Parent = New
+
+--//==========================================\\--
+--//              Function Command and Rank                          \\--
+--//==========================================\\--
+
+local NonAdmin = false
+local Admin = false
+local Owner= false
+local HeadAdmin = true
+
+local function Notice()
+
+local notice  = Instance.new("Sound", workspace)
+notice.Pitch = 1
+notice.SoundId = "rbxassetid://2865227271"
+notice:play()
+
+local TweenService = game:GetService("TweenService")
+
+local tweenInfo = TweenInfo.new(
+    0.5,
+    Enum.EasingStyle.Back,
+    Enum.EasingDirection.Out
+)
+
+local goal = {
+    Position = UDim2.new(1, -265, 1, -79),
+    BackgroundTransparency = 0.1
+}
+
+local goal1 = {
+    Position = UDim2.new(1, -255, 1, -79),
+    BackgroundTransparency = 0.1
+}
+
+local goal2 = {
+    Position = UDim2.new(1, 0, 1, -79),
+    BackgroundTransparency = 0.1
+}
+
+
+TweenService:Create(New, tweenInfo, goal1):Play()
+wait(5)
+TweenService:Create(New, tweenInfo, goal):Play()
+wait(0.3)
+TweenService:Create(New, tweenInfo, goal2):Play()
+end
+
+local function Rank()
+if NonAdmin then
+ Desc.Text = "You've been permRanked\nto 'NonAdmin'!"
+Notice()
+end
+if Admin then
+Desc.Text = "You've been permRanked\nto 'Admin'!"
+Notice()
+end
+if Owner then
+Desc.Text = "You've been permRanked\nto 'Owner'!"
+Notice()
+end
+if HeadAdmin then
+Desc.Text = "You've been permRanked\nto 'HeadAdmin'!"
+Notice()
+end
+end
+
+Rank()
+end
+
+wait(1)
+
+HdLoader()
